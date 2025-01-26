@@ -130,6 +130,51 @@ Print(agesList)
     </tr>
 </table>
 
+---------
+> ## 1.5 Applications of ADTs
+
+### Abstraction and Optimization
+
+> Abstraction means to have a user interact with an item at a high-level, with lower-level internal details hidden from the user. ADTs support abstraction by hiding the underlying implementation details and providing a well-defined set of operations for usingthe ADT.
+
+> Using abstract data types enables programmers or algorithm designers to focus on higher-level operations and algorithms, thus improving programmer efficieny. However, knowledge of the underlying implementation is needed to analyze or improve runtime efficiency.
+
+---------
+### ADTs in Standard Libraries
+
+> Most programming languages provide standard Libraries that implement common abstract data types. Some languages allow programmers to choose the underlying data structure used for the ADTs. Other programming languages may use a specific data structure to implement each ADT, or may automatically choose the underlying data-structure.
+
+<table style="width: 100%; block: auto; margin-right: auto; margin-left: auto;">
+    <tr>
+        <th><p>Programming Language</p></th>
+        <th><p> Library</p></th>
+        <th><p>Common supported ADTs</p></th>
+    </tr>
+    <tr>
+        <th><p style="color: #4584B6">Python</p></th>
+        <th><p>Python Standard Library</p></th>
+        <th><p>list, set, dictionaries, deque</p></th>
+    </tr>
+    <tr>
+        <th><p>C++</p></th>
+        <th><p> Standard Template Library(STL)</p></th>
+        <th><p>Vector, list, deque, queue, stack, set, map</p></th>
+    </tr>
+    <tr>
+        <th><p style="color: #F89820">Java</p></th>
+        <th><p> Java Collections Framework(JCF)</p></th>
+        <th><p> Collection, Set, List, Map, Queue, Deque</p></th>
+    </tr>
+</table>
+
+-------
+> ## ***1.6 Algorithm efficiency***
+### **Algorithm efficiency**
+> An algorithm describes the method to solve a computational problem. Programmers and computer scientists should use or write efficient algorithms. ***[Algorithm efficieny](https://en.wikipedia.org/wiki/Algorithmic_efficiency)*** is typically measured by an algorithm's computational complexity. ***[Computational Complexity](https://en.wikipedia.org/wiki/Computational_complexity)*** is the amount of resources used by the algorithm. The most common resources considered are the `runetime` and `memory` usage.
+
+### Runtime complexity, best case, worst case
+> An algorithm's ***[runtime complexity](https://en.wikipedia.org/wiki/Time_complexity)*** is a function, O(N), that represents the number of constant time operations is to identify best and worst case scenarios. An algorithm's ***[best case](https://en.wikipedia.org/wiki/Best,_worst_and_average_case)*** is the scenario where the algorithm does the `minimum` possible number of operations. An algorithm's ***[worst case](https://en.wikipedia.org/wiki/Best,_worst_and_average_case)*** is the scenario where the algorithm does the `maximum` possible number of operations. 
+
 
 [^1]: Data structures not only define how data is organized and stored, but also the operations performed on the data strucute. while common operations include *inserting, removing, and searching* for data, the algorithms to implement those operations are typically specific to each data strucute. Ex: Appending an item to a linked list requires a different algorithm than appending an item to an array.
 
