@@ -5,15 +5,16 @@ import java.util.LinkedList;
  * @see <a href="https://github.com/TuringProblem">GitHub Profile</a>
  **/
 public class LinkedLists<T> {
-    public Node<T>
-    {
-    public T value
-    public Node<T> next;
+    public class Node<T>{
+        public T value;
+        public Node<T> next;
 
-    public Node(T value) {
-            this.value = value;
-            this.next = null;
-        }}
+        public Node(T value) {
+                this.value = value;
+                this.next = null;
+
+        }
+    }
 
     // LinkedList has both a h -> head & t -> tail
     private Node<T> h;
@@ -28,7 +29,7 @@ public class LinkedLists<T> {
 
     public void append(T value) {
         // create new Node
-        Node<T> newNode = new N<>(value);
+        Node<T> newNode = new Node<>(value);
         if (h == null) {
             h = newNode;
             t = newNode;
