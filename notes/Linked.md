@@ -131,7 +131,7 @@ Print(agesList)
 </table>
 
 ---------
-> ## 1.5 Applications of ADTs
+> # 1.5 Applications of ADTs
 
 ### Abstraction and Optimization
 
@@ -168,12 +168,96 @@ Print(agesList)
 </table>
 
 -------
-> ## ***1.6 Algorithm efficiency***
+> # ***1.6 Algorithm efficiency***
 ### **Algorithm efficiency**
 > An algorithm describes the method to solve a computational problem. Programmers and computer scientists should use or write efficient algorithms. ***[Algorithm efficieny](https://en.wikipedia.org/wiki/Algorithmic_efficiency)*** is typically measured by an algorithm's computational complexity. ***[Computational Complexity](https://en.wikipedia.org/wiki/Computational_complexity)*** is the amount of resources used by the algorithm. The most common resources considered are the `runetime` and `memory` usage.
 
 ### Runtime complexity, best case, worst case
-> An algorithm's ***[runtime complexity](https://en.wikipedia.org/wiki/Time_complexity)*** is a function, O(N), that represents the number of constant time operations is to identify best and worst case scenarios. An algorithm's ***[best case](https://en.wikipedia.org/wiki/Best,_worst_and_average_case)*** is the scenario where the algorithm does the `minimum` possible number of operations. An algorithm's ***[worst case](https://en.wikipedia.org/wiki/Best,_worst_and_average_case)*** is the scenario where the algorithm does the `maximum` possible number of operations. 
+> An algorithm's ***[runtime complexity](https://en.wikipedia.org/wiki/Time_complexity)*** is a function, `O(N)`, that represents the number of constant time operations is to identify best and worst case scenarios. An algorithm's ***[best case](https://en.wikipedia.org/wiki/Best,_worst_and_average_case)*** is the scenario where the algorithm does the `minimum` possible number of operations. An algorithm's ***[worst case](https://en.wikipedia.org/wiki/Best,_worst_and_average_case)*** is the scenario where the algorithm does the `maximum` possible number of operations. 
+> ## Input data size ***must*** remain a variable
+>> A best case or worst case describes contents of the algorithm's input data only. The input data size must remain a variable, `O` (*Or whatever you like*). Otherwise, the overwhelming majority of algorithms would have a best case of `N=0`, since no input data would be processed. In both theory and practice, saying "*the best case is when the algorithm doesn't process any data*" is not useful. Complexity analysis always treats the input data size as a variable 
+
+> ## Example
+>> `[54][79][26][91][29][33]`
+>>
+>> ` (0) (1) (2) (3) (4) (5)` 
+>> ```java
+>>  LinearSearch(numbers, numberSize, key) {
+>>      i = 0;
+>>      while (i < numberSize) {
+>>          if (number[i] == key) {
+>>              return i;
+>>          }          
+>>          i += 1;
+>>      }
+>>      return -1;
+>>  }  
+>>```
+>> key = 26: `neither best nor worst case`
+>>
+>> key = 54: `best case`
+>>
+>> key = 82: `worst case`
+## Space Complexity
+> An algorithm's ***[space complexity](https://en.wikipedia.org/wiki/Space_complexity)*** is a function, `S(N)`, that represent the number of fixed-size memory units used by the algorithm for an input of size N. Ex: The space complexity of an algorithm that duplicates a list of numbers is `S(N) = 2N + k`, where `k` is a constant representing `memory` used for things like the loop counter and list pointers.
+>
+>Space complexity includes the input data and additional memory allocated by the alogrithm. An algorithm's ***[auxiliary space complexity](https://www.geeksforgeeks.org/what-is-the-difference-between-auxiliary-space-and-space-complexity/)*** is the space complexity not including the input data. Ex: An algorithm to find the maximum number in a list will have a space complexity of `S(N) = N + k`, but an auxiliary space complexity of `S(N)    = k`, where `k` is constant.
+
+---------
+> # 1.7 ***Clone of Introduction to data structures labs***
+### Step 1: Producing correct output
+> Three commented-out lines of code exist in `main()`. Uncomment the lines and click the `Run program` button. Verify that the program's output is:
+> ```java
+>// 2+2 = 4;
+>// Unknown method: printPlus2;
+>// Secret string: "abc";
+>```
+### Step 2: Inspecting the LabPrinter class
+> Inspect the LabPrinter class implemented in the `LabPrinter.java` file. Access `LabPrinter.java` by copying the code below: (after steps)
+### Step 3: Implementing `callMethodName()`
+> Remove the three uncommented lines from `main()`. Then implement the `callMethodNamed()` method to handle three cases:
+>> - If `methodName` is "`print2Plus2`" call printer's `print2Plus2()` method.
+>> - If `methodName` is "`printSecret`" call printer's `printSecret()` method.
+>> - If `methodName` is anything other than the two strings mentioned above, print "`Unknown method: xyz`", where `xyz` is `methodName's` value.
+>
+> After implementing `callMethodName()`, click the `Run program` button. Verify that the program's output is, once again: 
+> ```java
+>// 2+2 = 4;
+>// Unknown method: printPlus2;
+>// Secret string: "abc";
+>```
+### Step 4: Submitting code for 10/10 points
+> Once `callMethodNamed()` is properly implemented, submitting the code should receive 10 out of 10 points. The program's output is exactly the same as the implementation from step 1. But step 3's implementation uses the LabPrinter object and step 1 does not.
+
+
+###  here is the Java file:
+>    ```
+>    public class IntroToDSELabs {
+>       public static void callMethodNamed(LabPrinter printer, String methodName) {
+>          // Only implement this method after completing step 1
+>       }
+>       
+>       public static void main(String[] args) {
+>          LabPrinter printer = new LabPrinter("abc");
+>          
+>          // Step 1:
+>          // Uncomment the block below and submit code for grading. Note that the
+>          // submission passes the "Compare output" test, but fails each unit test.
+>          /*
+>          System.out.println("2 + 2 = 4");
+>          System.out.println("Unknown method: printPlus2");
+>          System.out.println("Secret string: \"abc\"");
+>          */
+>           
+>          // After completing step 1:
+>          // Remove lines of code from step 1 and implement the callMethodNamed() 
+>          // method above main().
+>          callMethodNamed(printer, "print2Plus2");
+>          callMethodNamed(printer, "printPlus2");
+>          callMethodNamed(printer, "printSecret");
+>       }
+>    }
+>    ```
 
 
 [^1]: Data structures not only define how data is organized and stored, but also the operations performed on the data strucute. while common operations include *inserting, removing, and searching* for data, the algorithms to implement those operations are typically specific to each data strucute. Ex: Appending an item to a linked list requires a different algorithm than appending an item to an array.
