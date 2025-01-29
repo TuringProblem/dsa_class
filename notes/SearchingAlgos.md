@@ -95,3 +95,14 @@
 >   }
 >
 >```
+### Binary seach efficiency
+> Binary search is incredibly efficient in finding an element within a sorted array. During each iteration or step of the algorithm, binary search reduces the search space (i.e., the remaining elements to search within) by about half. The search terminates when the element is found or the search space is empty (with an output indicating that the element was not found). For an `N` element array, the ***maximum*** number of steps required to reduce the search space to an empty subarray is `[ log_2(N) + 1]`Ex: `[log_2(32)] + 1 = 6`
+>
+> If each comparison takes 1 µs (1 microsecond), a binary search algorithm's runtime is at most 20 µs to search a list with 1,000,000 elements, 21 µs to search 2,000,000 elements, 22 µs to search 4,000,000 elements, and so on. Ex: Searching Amazon's online store, which has more than 200 million items, requires less than 28 µs; up to 7,000,000 times faster than linear search. 
+
+
+> # 2.3 Java: Linear and Binary Search
+### Linear search
+> Search algorithms are used to find the location (index) of some key element in an array, or otherwise indicate that the key is not the array. <a href="">***Linear search***</a> is a search algorithm that starts from the beginning of an array, and checks each element until the search key is found or the end of the array is reached. The `linearSearch()` method shown below compares each item in a given array, one at a time.
+>
+> The figure below shows the linear search code. If the key value is found, the index is returned. If the value is not found, -1 is returned.
