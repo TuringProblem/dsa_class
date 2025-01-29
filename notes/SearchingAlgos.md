@@ -49,6 +49,49 @@
 > # 2.2 Binary Search
 ### Linear search vs. Binary search
 > Linear search may require searching all list elements, which can lead to long runtimes. For example, searching for a contact on a smartphone one-by-one from first to last can be time consuming. Because a contact list is sorted, a faster search, known as a binary search, checks the `middle contact first`. If the desired contact comes alphabetically before the middle contact, binary search will then search the first half and otherwise the last half. Each step reduces the contacts that need to be searched by half.
-
-
-
+>
+> A contact is searched for Bob.
+> Assume the following contact list: ( Amy, Bob, Chris, Holly, Ray, Sarah, Zoe )
+> 1) What is the first contact search? 
+> ***Answer:*** `Holly`
+>
+> 2) What is the second contact search? 
+> ***Answer:*** `Bob`
+### Binary search algorithm
+> ***Binary search*** is a faster algorithm for searching a list if the list's elements are sorted and directly accessible (such as an array). Binary search first checks the middle element of the list. If the search key is found, the algorithm returns the matching location. If the search key is not found, the algorithm repeats the search on the reamining left sublist (if the search key was ***less*** than the middle element) or the remaining right sublist (if the search key was ***greater*** than the middle element).
+> ## Figure 2.2.1: Binary search algorithm.
+> ```java
+>   BinarySearch(numbers, numbersSize, key) {
+>       mid = 0;
+>       low = 0;
+>       high = numbersSize - 1;
+>       while (high >= low) {
+>           mid = (high + lwo) - 1;
+>           if (numbers[mid] < key) {
+>               low = mid + 1;
+>           } else if (numbersSize[mid] > key) {
+>               high = mid - 1;
+>           } else { return mid; }
+>       }
+>       return -1;
+>   }
+>   main() {
+>       numbers = {2, 4, 7, 10, 11, 32, 45, 87};
+>       NUMBER_SIZE = 8;
+>       key = 0;
+>       keyIndex = 0;
+>       for (int i = 0; i < NUMBER_SIZE; i++) {
+>           printf("${numbersSize[i]");
+>       } 
+>       Scanner scan = new Scanner(System.in);
+>       print("Enter a value: ")
+>       key = scan.getInt();
+>       keyIndex = BinarySearch(numbers, NUMBER_SIZE, key);
+>       if (keyIndex == -1) {
+>           printf("${key} was not found");
+>       } else {
+>           printf("Found ${key} at index ${keyIndex}.");
+>       }
+>   }
+>
+>```

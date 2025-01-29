@@ -1,3 +1,78 @@
+># 1.1 ***Data Structures***
+### ***Data Structures***
+> A *Data structure* is a way of organizing, storing, and preforming operations on data. Operations performed on a data structure include accessing or updating stored data, searching for specific data, inserting new data, and removing data. The following provides a list of basic data structures.
+-----
+<tr>
+    <th>Data Structure</th>
+    <th>Description</th>
+</tr>
+<tr>
+    <th>Record</th>
+    <th>A <a href="">***record***</a> is the data structure that stores subitems, often called fields with a name associated with each subitem.</th>
+</tr>
+<tr>
+    <th>Array</th>
+    <th>An <a href="">***array***</a> is a data structure that stores an ordered list of items, where each item is directly accessible by a positional index.</th>
+</tr>
+<tr>
+    <th>Linked List</th>
+    <th>A <a href="">***Linked List***</a> is a data structure that stores an ordered list of items in nodes, where each node stores data and has a pointer to the next node.</th>
+</tr>
+<tr>
+    <th>Binary Tree</th>
+    <th>A <a href="">***binary tree***</a> is a data structure in which each node stores data and has up to two children, known as a left child and a right child.</th>
+</tr>
+<tr>
+    <th>Hash Table</th>
+    <th>A <a href="">***hash table***</a> is a data structure that stores unordered items by mapping (or hashing) each item to a location in an array.</th>
+</tr>
+<tr>
+    <th>Heap</th>
+    <th>a <a href="">***max-heap***</a> is a tree that maintains the simple propert that a node's key is greater than or equal to the node's childrens' keys. A <a href="">***min-heap***</a> is a tree that maintains the simple property that a node's key is less than or equal to the node's childrens' keys.</th>
+</tr>
+<tr>
+    <th>Graph</th>
+    <th>A <a href="">***graph***</a> is a data structure for representing connections among items, and consists of vertices connected by edges. A <a href="">***vertex***</a> represents an item in a graph. An <a href="">***edge***</a> represents a connection between two vertices in a graph.</th>
+</tr>
+> ## Choosing data structures
+> The selection of data structures used in a program depends on both the type of data being stored and the operations the program may need to preform on that data. Choosing the best data structure often requires determining which data structure provides a good balance given expected uses. Ex: If a program requires fast insertion of new data, a linked list may be a better choice than an array.
+
+># 1.2: ***Introduction to Algorithms***
+### ***Algorithms***
+> An <a href="">algorithm</a> describes a sequence of steps to solve a computational problem or perform a calculation. An algorithm can be described in English, psuedoCode, a programming language, hardware, etc. A computational problem specific an input, a question about the input that can be answered using a computer, and the desired output.
+>
+> ## Practical applications of algorithms
+> Computational problems can be found in numerous domains, including e-commerce, internet technologies, biology, manufacturing, transportation, etc. Algorithms have been developed for numberous computational problems within these domains.
+>
+> A computational problem can be solved in many ways, but finding the best algorithm to solve a problem can be challenging. However, many computational problems have common subproblems, for which efficient algorithms have been developed. The examples below describe a computational problem within a specific domain and list a common algorithm (each discussed elsewhere) that can be used to solve the problem.
+<tr>
+    <th>Application domain</th>
+    <th>Computational problem</th>
+    <th>Common algorithm</th>
+</tr>
+<tr>
+    <th>DNA analysis</th>
+    <th>Given two DNA sequences from different individuals, what is the longest shared sequence of nucleotides?</th>
+    <th>*Longest common substring problem:* A longest common substring algorithm determines the longest common substring that exists in two input strings.<br><br>DNA sequences can be represented using strings consisting of the letters A, C, G, and T to represent the four different nucleotides.</th>
+</tr>
+<tr>
+    <th>Search engines</th>
+    <th>Given a product ID and a sorted array of all in-stock products, is the product in stock and what is the product's price?</th>
+    <th>*Binary searcH:* The binary search algorithm is an efficient algorithm for searching a list. The list's elements must be sorted and directly accessible (such as an array).</th>
+</tr>
+<tr>
+    <th>Navigation</th>
+    <th>Given a user's current location and desired location, what is the fastest route to walk to the destination?</th>
+    <th>*Dijkstra's shortest path:* Dijkstra's shortest path algorithm determines the shortest path frmo a start vertex to each vertex in a graph.<br><br>The possible routes between two locations can be represented using a graph, where vertices represent specific locations connecting edges specify the time required to walk between those two locations.</th>
+</tr>
+> ## Efficient algorithms and hard problems
+> Computer scientists and programmers typically focus on using and designing efficient algorithms to solve problems. Algorithm efficiency is most commonly measured by the algorithm runtime, and an efficient algorithm is one whose runtime increases no more than polynomially with respect to the input size. However, some problems exist for which an efficient algorithm is unknown.<br>***NP-complete*** problems are a set of problems for which no known efficient algorithm exists. NP-complete problems have the following characteristics:
+> - No efficient algorithm has been found to solve an NP-complete problem.
+> - No one has proven that an efficient algorithm to solve an NP-complete problem is impossible.
+> - If an efficient algorithm exists for one NP-complete problem, then all NP-complete problems can be solved efficiently.
+> By knowing a problem is NP-complete, instead of trying to find an efficient algorithm to solve the problem, a programmer can focus on finding an algorithm to efficiently find a good, but non-optimal, solution.
+
+
 ># 1.3 ***Algorithms for Data Structures***[^1]
 # ***Appending***
 > ## ***Array*** --*(PsuedoCode)*-- O(1)
