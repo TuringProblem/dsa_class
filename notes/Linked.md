@@ -2,38 +2,40 @@
 ### ***Data Structures***
 > A *Data structure* is a way of organizing, storing, and preforming operations on data. Operations performed on a data structure include accessing or updating stored data, searching for specific data, inserting new data, and removing data. The following provides a list of basic data structures.
 -----
-<tr>
-    <th>Data Structure</th>
-    <th>Description</th>
-</tr>
-<tr>
-    <th>Record</th>
-    <th>A <a href="">***record***</a> is the data structure that stores subitems, often called fields with a name associated with each subitem.</th>
-</tr>
-<tr>
-    <th>Array</th>
-    <th>An <a href="">***array***</a> is a data structure that stores an ordered list of items, where each item is directly accessible by a positional index.</th>
-</tr>
-<tr>
-    <th>Linked List</th>
-    <th>A <a href="">***Linked List***</a> is a data structure that stores an ordered list of items in nodes, where each node stores data and has a pointer to the next node.</th>
-</tr>
-<tr>
-    <th>Binary Tree</th>
-    <th>A <a href="">***binary tree***</a> is a data structure in which each node stores data and has up to two children, known as a left child and a right child.</th>
-</tr>
-<tr>
-    <th>Hash Table</th>
-    <th>A <a href="">***hash table***</a> is a data structure that stores unordered items by mapping (or hashing) each item to a location in an array.</th>
-</tr>
-<tr>
-    <th>Heap</th>
-    <th>a <a href="">***max-heap***</a> is a tree that maintains the simple propert that a node's key is greater than or equal to the node's childrens' keys. A <a href="">***min-heap***</a> is a tree that maintains the simple property that a node's key is less than or equal to the node's childrens' keys.</th>
-</tr>
-<tr>
-    <th>Graph</th>
-    <th>A <a href="">***graph***</a> is a data structure for representing connections among items, and consists of vertices connected by edges. A <a href="">***vertex***</a> represents an item in a graph. An <a href="">***edge***</a> represents a connection between two vertices in a graph.</th>
-</tr>
+<table>
+    <tr>
+        <th>Data Structure</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <th>Record</th>
+        <th>A <a href="">***record***</a> is the data structure that stores subitems, often called fields with a name associated with each subitem.</th>
+    </tr>
+    <tr>
+        <th>Array</th>
+        <th>An <a href="">***array***</a> is a data structure that stores an ordered list of items, where each item is directly accessible by a positional index.</th>
+    </tr>
+    <tr>
+        <th>Linked List</th>
+        <th>A <a href="">***Linked List***</a> is a data structure that stores an ordered list of items in nodes, where each node stores data and has a pointer to the next node.</th>
+    </tr>
+    <tr>
+        <th>Binary Tree</th>
+        <th>A <a href="">***binary tree***</a> is a data structure in which each node stores data and has up to two children, known as a left child and a right child.</th>
+    </tr>
+    <tr>
+        <th>Hash Table</th>
+        <th>A <a href="">***hash table***</a> is a data structure that stores unordered items by mapping (or hashing) each item to a location in an array.</th>
+    </tr>
+    <tr>
+        <th>Heap</th>
+        <th>a <a href="">***max-heap***</a> is a tree that maintains the simple propert that a node's key is greater than or equal to the node's childrens' keys. A <a href="">***min-heap***</a> is a tree that maintains the simple property that a node's key is less than or equal to the node's childrens' keys.</th>
+    </tr>
+    <tr>
+        <th>Graph</th>
+        <th>A <a href="">***graph***</a> is a data structure for representing connections among items, and consists of vertices connected by edges. A <a href="">***vertex***</a> represents an item in a graph. An <a href="">***edge***</a> represents a connection between two vertices in a graph.</th>
+    </tr>
+</table>
 > ## Choosing data structures
 > The selection of data structures used in a program depends on both the type of data being stored and the operations the program may need to preform on that data. Choosing the best data structure often requires determining which data structure provides a good balance given expected uses. Ex: If a program requires fast insertion of new data, a linked list may be a better choice than an array.
 
