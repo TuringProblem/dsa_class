@@ -1,7 +1,9 @@
+
 /**
  * @author { @Override } | 20250211 : @22:24
  * @see <a href="https://github.com/TuringProblem/">GitHub Profile</a>
  **/
+import java.util.Arrays;
 
 public class SelectionSort {
     private static void selectSort(int[] arr, int numbSize) {
@@ -25,13 +27,17 @@ public class SelectionSort {
         int numbSize = myUnsortedArray.length;
         System.out.printf("Unsorted Array Length: %d\n", numbSize);
         System.out.println("Unsorted Array: ");
+        System.out.printf("Unsorted: %s\n", Arrays.toString(myUnsortedArray));
         for (int i = 0; i < numbSize; i++) {
             System.out.printf("Index: [%d]\nArray Numb: %d\n", i, myUnsortedArray[i]);
         }
         selectSort(myUnsortedArray, numbSize);
+
         for (int i = 0; i < numbSize; i++) {
             System.out.printf("Sorted: %d\n", myUnsortedArray[i]);
         }
+
+        System.out.printf("Sorted: %s\n", Arrays.toString(myUnsortedArray));
 
     }
 }
