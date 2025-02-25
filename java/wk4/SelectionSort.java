@@ -33,6 +33,9 @@ public class SelectionSort {
         }
         selectSort(myUnsortedArray, numbSize);
 
+        for (int sorted: myUnsortedArray) {
+            System.out.printf("Sorted: %d\n", sorted);
+        }
         for (int i = 0; i < numbSize; i++) {
             System.out.printf("Sorted: %d\n", myUnsortedArray[i]);
         }
