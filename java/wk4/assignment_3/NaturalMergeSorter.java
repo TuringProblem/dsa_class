@@ -1,8 +1,16 @@
 public class NaturalMergeSorter {
     public int getSortedRunLength(int[] array, int arrayLength,
             int startIndex) {
+
+        // if startIndex is out of bounds we need to return 0;
         return 0;
+
+        // Returns the number of array elements sorted in ascending order, starting at
+        // startIndex -> ending either at the end of the sort run, or the end of the
+        // array, whichever comes first.
+
         // Your code here
+
     }
 
     public void naturalMergeSort(int[] array, int arrayLength) {

@@ -26,14 +26,14 @@ public class NaturalMerge {
                 RunLengthTestCase.assembleComponents(arr1, arr1Length, arr1Length, 0),
                 RunLengthTestCase.assembleComponents(arr1, arr1Length, 0, arr1Length),
                 RunLengthTestCase.assembleComponents(arr1, arr1Length, 3, arr1Length - 3),
-                RunLengthTestCase.assembleComponents(arr2, arr2Length, 0, 3), // Checking static factory method
-                new RunLengthTestCase(arr2, arr2Length, 2, 1),
-                new RunLengthTestCase(arr2, arr2Length, 3, 6),
-                new RunLengthTestCase(arr3, arr3Length, 0, 1),
-                new RunLengthTestCase(arr3, arr3Length, 3, 1),
-                new RunLengthTestCase(arr4, arr4Length, 0, arr4Length),
-                new RunLengthTestCase(arr4, arr4Length, 4, arr4Length - 4),
-                new RunLengthTestCase(arr4, arr4Length, 5, arr4Length - 5)
+                RunLengthTestCase.assembleComponents(arr2, arr2Length, 0, 3),
+                RunLengthTestCase.assembleComponents(arr2, arr2Length, 2, 1),
+                RunLengthTestCase.assembleComponents(arr2, arr2Length, 3, 6),
+                RunLengthTestCase.assembleComponents(arr3, arr3Length, 0, 1),
+                RunLengthTestCase.assembleComponents(arr3, arr3Length, 3, 1),
+                RunLengthTestCase.assembleComponents(arr4, arr4Length, 0, arr4Length),
+                RunLengthTestCase.assembleComponents(arr4, arr4Length, 4, arr4Length - 4),
+                RunLengthTestCase.assembleComponents(arr4, arr4Length, 5, arr4Length - 5)
         };
 
         // Execute each test case
