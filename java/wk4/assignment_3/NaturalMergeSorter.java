@@ -1,20 +1,65 @@
 public class NaturalMergeSorter {
-    public int getSortedRunLength(int[] array, int arrayLength,
-            int startIndex) {
+    public int getSortedRunLength(int[] array, int arrayLength, int startIndex) {
 
-        // if startIndex is out of bounds we need to return 0;
-        return 0;
+        if (startIndex >= arrayLength || startIndex < 0) {
+            return 0;
+        }
 
-        // Returns the number of array elements sorted in ascending order, starting at
-        // startIndex -> ending either at the end of the sort run, or the end of the
-        // array, whichever comes first.
+        if (startIndex == arrayLength - 1) {
+            return 1;
+        }
 
-        // Your code here
+        int runL = 1;
+        int currentIndex = startIndex;
 
+        while (currentIndex < arrayLength - 1 && array[currentIndex] <= array[currentIndex + 1]) {
+            runL++;
+            currentIndex++;
+        }
+
+        return runL;
     }
 
     public void naturalMergeSort(int[] array, int arrayLength) {
-        // Your code here
+        if (array == null || arrayLength <= 1) {
+            return;
+        }
+
+        // 1: Start at index[i] = 0
+
+        int i = 0;
+        while (true) {
+
+            // 2: Get the length of the first sort run, starting at [i]
+            int firstL = getSortedRunLength(array, arrayLength, i);
+
+            // - Return if the first runL == arrayLength
+            if (firstL == arrayLength) {
+                return;
+            }
+
+            // - if the first run ends at the array's end -> i = 0; repeat
+            if (i + firstL >= arrayLength) {
+                i = 0;
+                continue;
+            }
+
+            // 3: Get the length of the second sorted run, starting immediately after the
+            // first
+            int secondRunStart = i + firstL;
+            int secondL = getSortedRunLength(array, arrayLength, secondRunStart);
+
+            // 4: Merge the two runs with the provided merge() method
+            merge(array, i, i + firstL - 1, secondRunStart + secondL - 1);
+
+            // 5: Reassign [i] with the first index after the second run, or 0 if the second
+            // run ends at the array's end
+            i = secondRunStart + secondL;
+            if (i >= arrayLength) {
+                i = 0;
+            }
+            // 6: go to step 2
+        }
     }
 
     public void merge(int[] numbers, int leftFirst, int leftLast,

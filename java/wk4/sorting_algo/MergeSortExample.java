@@ -4,14 +4,13 @@ import java.util.Arrays;
 public class MergeSortExample {
     public static void main(String[] args) {
         Random rand = new Random();
-        int[] numbers = new int[10];
+        int[] numbers = new int[1000];
 
         for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = rand.nextInt(20);
+            numbers[i] = rand.nextInt(25000);
         }
 
         compareArrayBeforeAndAfterMergeSort(numbers);
-
         // System.out.printf("Before sorting: %s\n", Arrays.toString(numbers));
         // mergeSort(numbers);
         // System.out.printf("\nAfter sorting: %s\n\n\n", Arrays.toString(numbers));
@@ -56,24 +55,30 @@ public class MergeSortExample {
         while (i < leftSize && j < rightSize) {
             if (left[i] <= right[j]) {
                 inputArray[k] = left[i];
-                System.out.printf("k: %d\n", inputArray[k]);
-                System.out.printf("Compared: LP[%d] <= RP[%d]: --> TempArray: %s\n\n", left[i], right[j],
-                        Arrays.toString(inputArray));
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                // System.out.printf("k: %d\n", inputArray[k]);
+                // System.out.printf("Compared: LP[%d] <= RP[%d]: --> TempArray: %s\n\n",
+                // left[i], right[j],
+                // Arrays.toString(inputArray));
+                /*
+                 * try {
+                 * Thread.sleep(1000);
+                 * } catch (InterruptedException e) {
+                 * e.printStackTrace();
+                 * }
+                 */
                 i++;
             } else {
                 inputArray[k] = right[j];
-                System.out.printf("Compared: LP[%d] >= RP[%d]: --> TempArray: %s\n\n", left[i], right[j],
-                        Arrays.toString(inputArray));
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                // System.out.printf("Compared: LP[%d] >= RP[%d]: --> TempArray: %s\n\n",
+                // left[i], right[j],
+                // Arrays.toString(inputArray));
+                /*
+                 * try {
+                 * Thread.sleep(1000);
+                 * } catch (InterruptedException e) {
+                 * e.printStackTrace();
+                 * }
+                 */
                 j++;
             }
             k++;

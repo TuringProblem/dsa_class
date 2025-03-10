@@ -9,25 +9,12 @@ public class RunLengthTestCase {
     public int startIndex;
     public int expectedReturnValue;
 
-    public RunLengthTestCase(int[] array, int arrayLength, int startIndex, int expectedReturnValue) {
+    public RunLengthTestCase(int[] array, int len, int start,
+            int expectedRet) {
         this.array = array;
-        this.arrayLength = arrayLength;
-        this.startIndex = startIndex;
-        this.expectedReturnValue = expectedReturnValue;
-    }
-
-    public static RunLengthTestCase assembleComponents(int[] array, int arrayLength, int startIndex,
-            int expectedReturnValue) {
-        try {
-            System.out.println("Hello, I've actually worked, and instantiated "
-                    + new RunLengthTestCase(array, arrayLength, startIndex, expectedReturnValue).toString());
-            Thread.sleep(1000);
-
-        } catch (InterruptedException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return new RunLengthTestCase(array, arrayLength, startIndex, expectedReturnValue);
+        arrayLength = len;
+        startIndex = start;
+        expectedReturnValue = expectedRet;
     }
 
     // Executes the test case. If the test case passes, a message that starts
@@ -38,8 +25,7 @@ public class RunLengthTestCase {
         NaturalMergeSorter userSorter = new NaturalMergeSorter();
 
         // Call the getSortedRunLength() method with the test case parameters
-        int userRetVal = userSorter.getSortedRunLength(
-                array, arrayLength, startIndex);
+        int userRetVal = userSorter.getSortedRunLength(array, arrayLength, startIndex);
 
         // The test passed only if the actual return value equals the expected
         // return value
