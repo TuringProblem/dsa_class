@@ -3,7 +3,7 @@ public class SinglyLinked {
     class Node {
         int value;
         Node next;
-        
+
         public Node(int value) {
             this.value = value;
             this.next = null;
@@ -36,8 +36,21 @@ public class SinglyLinked {
 
     public static void main(String[] args) {
         SinglyLinked singlyLL = new SinglyLinked();
+        singlyLL.append(85);
         singlyLL.append(1);
+        singlyLL.append(55);
         singlyLL.append(2);
-        System.out.println(singlyLL.head);
+        System.out.println(singlyLL.toString());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        Node current = head;
+        while (current != null) {
+            sb.append(current.value).append(" ");
+            current = current.next;
+        }
+        return sb.toString();
     }
 }
