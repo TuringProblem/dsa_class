@@ -1,0 +1,10 @@
+# Quick Notes neovim_note9
+- [2025-03-10 22:04] 
+
+- Use @filename.ext to reference files in your project
+- Press Enter on a reference to jump to the file
+- Use <leader>nv to switch between notes and editor
+- Use <leader>np to go to previous notes file
+
+## TODOs
+
