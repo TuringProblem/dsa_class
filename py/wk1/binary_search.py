@@ -25,7 +25,7 @@ def main():
     # Will work because is in order
     sortedList: list[int] = [15, 25, 35, 45, 55, 65, 99, 101, 155]
     print(f"Array before search: {sortedList}")
-    print(f"Key searched: {binarySearch(sortedList, 55)}")
+    print(f"index[{binarySearch(sortedList, 55)}]")
 
 
 main()
