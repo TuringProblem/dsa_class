@@ -13,6 +13,7 @@ function timeToPush() {
     if [[ $answer -eq 'y']]; then
       return $input
 
+  memo["$input"] = $input 
 
 }
 echo "Please enter the url: "
