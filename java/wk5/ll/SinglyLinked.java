@@ -1,8 +1,12 @@
+import java.util.ArrayList;
+import java.util.Random;
+
 public class SinglyLinked {
+  public static Random rand = new Random();
 
   class Node {
-    int value;
-    Node next;
+    public int value;
+    public Node next;
 
     public Node(int value) {
       this.value = value;
@@ -25,8 +29,7 @@ public class SinglyLinked {
     length = 1;
   }
 
-  public void append(int value) {
-    Node newNode = new Node(value);
+  public void append(Node newNode) {
     if (head == null) {
       head = newNode;
       tail = newNode;
@@ -37,8 +40,7 @@ public class SinglyLinked {
     length++;
   }
 
-  public void prepend(int value) {
-    Node newNode = new Node(value);
+  public void prepend(Node newNode) {
     if (head == null) {
       head = newNode;
       tail = newNode;
@@ -49,38 +51,60 @@ public class SinglyLinked {
     length++;
   }
 
-  public void insertAfter(SinglyLinked list, Node current, Node newNode) {
-    if (list.head == null) {
-      list.head = newNode;
-      list.tail = newNode;
-    } else if (current == list.tail) {
-      list.tail.next = newNode;
-      list.tail = newNode;
+  public void insertAfter(Node current, Node newNode) {
+    if (head == null) {
+      head = newNode;
+      tail = newNode;
+    } else if (current == tail) {
+      tail.next = newNode;
+      tail = newNode;
     } else {
       newNode.next = current.next;
       current.next = newNode;
     }
-
   }
 
-  public static void main(String[] args) {
+  public static void testCaseOne() {
     SinglyLinked singlyLL = new SinglyLinked();
-    singlyLL.append(85);
-    singlyLL.append(1);
-    singlyLL.append(55);
-    singlyLL.append(2);
+    ArrayList<Node> nodes = new ArrayList<>();
+    for (int i = 0; i < 10; i++) {
+      nodes.add(singlyLL.new Node(rand.nextInt(100)));
+      System.out.println(nodes.get(i).value);
+      singlyLL.append(nodes.get(i));
+    }
+
+    singlyLL.append(singlyLL.new Node(85));
+    singlyLL.append(singlyLL.new Node(1));
+    singlyLL.append(singlyLL.new Node(2));
+    singlyLL.append(singlyLL.new Node(55));
     System.out.println(singlyLL.toString());
 
     SinglyLinked singlyLLTwo = new SinglyLinked(15);
-    singlyLLTwo.append(85);
-    singlyLLTwo.append(92);
-    singlyLLTwo.append(9);
-    singlyLLTwo.insertAfter(singlyLLTwo, 9, new Node(55));
-    singlyLLTwo.append(7);
-    singlyLLTwo.append(12);
+    singlyLLTwo.append(singlyLLTwo.new Node(85));
+    singlyLLTwo.append(singlyLLTwo.new Node(92));
+    singlyLLTwo.append(singlyLLTwo.new Node(9));
+    // singlyLLTwo.insertAfter(singlyLLTwo, 9, new Node(100));
+    singlyLLTwo.append(singlyLLTwo.new Node(7));
+    singlyLLTwo.append(singlyLLTwo.new Node(12));
     System.out.println(singlyLLTwo.toString());
 
-    singlyLL.getLength();
+  }
+
+  public static void testCaseTwo() {
+    SinglyLinked singly = new SinglyLinked();
+    for (int i = 0; i < 10; i++) {
+      singly.append(singly.new Node(rand.nextInt(100)));
+    }
+
+    singly.prepend(singly.new Node(85));
+
+    singly.insertAfter(y, singly.new Node(85));
+
+    System.out.println(singly.toString());
+  }
+
+  public static void main(String[] args) {
+    testCaseOne();
   }
 
   public int getLength() {
