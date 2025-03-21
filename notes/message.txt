@@ -1,0 +1,192 @@
+# OCaml Language Reference
+
+## Basic Syntax and REPL
+
+| Syntax | Meaning | Example |
+|--------|---------|---------|
+| `;;` | End of expression in REPL | `let x = 5;;` |
+| `let` | Variable/function binding | `let x = 5` |
+| `let rec` | Recursive function definition | `let rec fact n = if n = 0 then 1 else n * fact (n-1)` |
+| `->` | Function type signature | `int -> string` means a function taking an int and returning a string |
+| `fun` | Anonymous function | `fun x -> x * 2` |
+| `;` | Sequence operator | `expr1; expr2` evaluates both, returns value of expr2 |
+| `_` | Wildcard pattern (ignore) | `match x with | _ -> "anything"` |
+
+## Types and Type Annotations
+
+| Syntax | Meaning | Example |
+|--------|---------|---------|
+| `:` | Type annotation | `let x: int = 5` |
+| `type` | Type definition | `type point = { x: float; y: float }` |
+| `'a` | Type parameter (generic) | `'a list` (like `List<T>` in Java) |
+| `unit` | Unit type (like void) | `()` (the only value of type unit) |
+| `int`, `float`, `bool`, `char`, `string` | Basic types | `5`, `3.14`, `true`, `'a'`, `"hello"` |
+| `int32`, `int64`, `nativeint` | Integer variants | `5l`, `5L`, `5n` |
+
+## Collections and Data Structures
+
+| Syntax | Meaning | Example |
+|--------|---------|---------|
+| `[]` | Empty list | `let empty = []` |
+| `::` | Cons operator (add to list) | `1 :: [2; 3]` gives `[1; 2; 3]` |
+| `@` | List concatenation | `[1; 2] @ [3; 4]` gives `[1; 2; 3; 4]` |
+| `[a; b; c]` | List literal | `let xs = [1; 2; 3]` |
+| `(a, b, c)` | Tuple | `let t = (1, "hello", true)` |
+| `[|a; b; c|]` | Array literal | `let arr = [|1; 2; 3|]` |
+| `arr.(i)` | Array access | `arr.(0)` gets first element |
+| `arr.(i) <- v` | Array assignment | `arr.(0) <- 42` |
+| `{field1; field2}` | Record literal | `let p = {x=1.0; y=2.0}` |
+| `r.field` | Record field access | `p.x` |
+
+## Pattern Matching
+
+| Syntax | Meaning | Example |
+|--------|---------|---------|
+| `match x with` | Pattern matching expression | `match lst with | [] -> ... | x::xs -> ...` |
+| `|` | Pattern separator | `match x with | 0 -> "zero" | n -> string_of_int n` |
+| `when` | Pattern guard | `match x with | n when n > 0 -> "positive" | _ -> "non-positive"` |
+| `function` | Shorthand for `fun x -> match x with` | `function | [] -> 0 | _::xs -> 1 + length xs` |
+
+## Modules and Functors
+
+| Syntax | Meaning | Example |
+|--------|---------|---------|
+| `module M = struct ... end` | Module definition | `module Math = struct let pi = 3.14 end` |
+| `open M` | Import module (like import in Java) | `open List` makes List functions available |
+| `M.x` | Access module member | `Math.pi` |
+| `module type S = sig ... end` | Module type (interface) | `module type STACK = sig ... end` |
+| `module M : S = struct ... end` | Module with signature | Constrains module to interface |
+| `module F(M: S) = struct ... end` | Functor (parameterized module) | Like generic classes in Java |
+
+## Variant Types (Sum Types)
+
+| Syntax | Meaning | Example |
+|--------|---------|---------|
+| `type t = A | B of int` | Variant type definition | `type shape = Circle of float | Rectangle of float * float` |
+| `A`, `B 5` | Variant constructor | `Circle 2.0`, `Rectangle(3.0, 4.0)` |
+
+## Options and Results
+
+| Syntax | Meaning | Example |
+|--------|---------|---------|
+| `None`, `Some x` | Option type values | `let find_user id = if valid id then Some user else None` |
+| `Ok x`, `Error e` | Result type values | `let divide a b = if b = 0 then Error "Division by zero" else Ok (a / b)` |
+
+## Control Flow
+
+| Syntax | Meaning | Example |
+|--------|---------|---------|
+| `if c then e1 else e2` | Conditional expression | `if x > 0 then "positive" else "non-positive"` |
+| `for i = a to b do ... done` | For loop (inclusive) | `for i = 1 to 10 do print_int i done` |
+| `for i = a downto b do ... done` | Descending for loop | `for i = 10 downto 1 do print_int i done` |
+| `while c do ... done` | While loop | `while !x > 0 do x := !x - 1 done` |
+
+## Mutability and References
+
+| Syntax | Meaning | Example |
+|--------|---------|---------|
+| `ref` | Mutable reference cell | `let x = ref 5` (similar to pointer) |
+| `!` | Dereference | `!x` gets the value (5) |
+| `:=` | Assignment | `x := 10` updates the reference |
+| `mutable` | Mutable record field | `type person = {name: string; mutable age: int}` |
+
+## Operators
+
+| Operator | Meaning | Example |
+|----------|---------|---------|
+| `+`, `-`, `*`, `/` | Integer arithmetic | `3 + 4` gives `7` |
+| `+.`, `-.`, `*.`, `/.` | Float arithmetic | `3.0 +. 4.0` gives `7.0` |
+| `=`, `<>` | Equality, inequality (structural) | `[1;2] = [1;2]` is `true` |
+| `==`, `!=` | Physical equality (identity) | `ref 1 == ref 1` is `false` |
+| `&&`, `||` | Logical AND, OR | `true && false` is `false` |
+| `not` | Logical NOT | `not true` is `false` |
+| `~-`, `~-.` | Unary negation | `~-5` is `-5` |
+| `|>` | Pipeline (forward composition) | `5 |> f |> g` means `g(f(5))` |
+| `@@` | Application (reverse composition) | `f @@ g @@ x` means `f(g(x))` |
+
+## Module Functions (Common Libraries)
+
+### List Module
+```ocaml
+List.hd      (* head - first element *)
+List.tl      (* tail - all but first *)
+List.length  (* length of list *)
+List.map     (* apply function to all elements *)
+List.filter  (* keep elements matching predicate *)
+List.fold_left  (* accumulate from left to right *)
+List.iter    (* apply side-effecting function *)
+```
+
+### String Module
+```ocaml
+String.length    (* length of string *)
+String.get       (* get character at index *)
+String.sub       (* substring *)
+String.concat    (* join strings with separator *)
+String.split_on_char  (* split string on character *)
+```
+
+### Array Module
+```ocaml
+Array.length     (* length of array *)
+Array.make       (* create array with default value *)
+Array.init       (* create with initialization function *)
+Array.map        (* apply function to all elements *)
+Array.iter       (* apply side-effecting function *)
+```
+
+## OCaml Idioms
+
+1. **Pattern matching everywhere**
+   ```ocaml
+   let first_elem = function
+     | [] -> None
+     | x::_ -> Some x
+   ```
+
+2. **Pipeline operator for readability**
+   ```ocaml
+   let result = 
+     [1;2;3;4]
+     |> List.map (fun x -> x * 2)
+     |> List.filter (fun x -> x > 5)
+     |> List.fold_left (+) 0
+   ```
+
+3. **Options instead of null**
+   ```ocaml
+   match find_user id with
+   | None -> "User not found"
+   | Some user -> user.name
+   ```
+
+4. **Partial application for currying**
+   ```ocaml
+   let add x y = x + y
+   let add5 = add 5   (* returns a function that adds 5 *)
+   ```
+
+5. **Labeled arguments**
+   ```ocaml
+   let create ~name ~age () = {name; age}
+   let person = create ~age:30 ~name:"Alice" ()
+   ```
+
+6. **Optional arguments**
+   ```ocaml
+   let greet ?(prefix="Hello") name = prefix ^ ", " ^ name
+   let msg = greet ~prefix:"Hi" "Bob"   (* "Hi, Bob" *)
+   let msg2 = greet "Alice"             (* "Hello, Alice" *)
+   ```
+
+## Key Differences from Java
+
+1. **Functional-first**: OCaml is primarily functional but supports imperative code
+2. **Immutable by default**: Most data structures are immutable
+3. **No inheritance**: Uses composition over inheritance
+4. **Pattern matching**: Much more powerful than Java switch statements
+5. **Type inference**: Type annotations usually optional
+6. **No null**: Uses Option type instead
+7. **Algebraic data types**: Sum and product types
+8. **Expression-oriented**: Everything is an expression with a value
+9. **Powerful module system**: Modules and functors for code organization
