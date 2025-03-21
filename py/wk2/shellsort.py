@@ -3,7 +3,7 @@ import random
 # @author { @Override } | @since 20250318 : 19:57
 
 
-def shellsort(array: list[int], startIndex: int, gap: int) -> list[int]:
+def insertionsortInterleaved(array: list[int], startIndex: int, gap: int) -> int:
     swaps: int = 0
     for i in range(startIndex + gap, len(array)):
         j: int = i
@@ -11,14 +11,16 @@ def shellsort(array: list[int], startIndex: int, gap: int) -> list[int]:
             swaps += 1
             array[j], array[j - 1] = array[j - 1], array[j]
             j -= gap
-    return array
+    return swaps 
 
 
-def handleInput(array: list[int]) -> list[int]:
-    indexValue: int = int(input("Please enter the starting index "))
-    gapValue: int = int(input("Please enter the gap value: "))
-    sorted: list[int] = shellsort(array, indexValue, gapValue)
-    return sorted
+def shellsort(array: list[int], gapValues: list[int]) -> int:
+    totalSwaps: int = 0
+    for i in range(0, len(gapValues)):
+
+
+
+
 
 
 def main():
