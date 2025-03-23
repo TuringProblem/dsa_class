@@ -37,8 +37,20 @@ public class GenericSingly<T> {
     }
   }
 
-  public void insertAfter(Node<T> current, T value) {
-
+  public void insertAfter(T targetValue, T newValue) {
+    Node<T> temp = head;
+    while (temp.next != null) {
+      if (temp.value.equals(targetValue)) {
+        Node<T> newNode = new Node<>(newValue);
+        newNode.next = temp.next;
+        temp.next = newNode;
+        if (temp == tail) {
+          tail = newNode;
+        }
+        return;
+      }
+      temp = temp.next;
+    }
   }
 
   public String printList(GenericSingly<T> link) {
@@ -65,6 +77,10 @@ public class GenericSingly<T> {
     testList.append(77);
     testList.prepend(91);
     testList.prepend(88);
+    System.out.printf("The list before adding node: %s", testList.printList(testList));
+    testList.insertAfter(91, 69);
+    System.out.printf("The list after adding node: %s", testList.printList(testList));
+
     return testList;
   }
 

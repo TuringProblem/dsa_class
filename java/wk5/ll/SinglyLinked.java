@@ -51,16 +51,16 @@ public class SinglyLinked {
     length++;
   }
 
-  public void insertAfter(Node current, Node newNode) {
-    if (head == null) {
-      head = newNode;
-      tail = newNode;
-    } else if (current == tail) {
-      tail.next = newNode;
-      tail = newNode;
-    } else {
-      newNode.next = current.next;
-      current.next = newNode;
+  public void insert(Node target, Node newNode) {
+    Node temp = head;
+    while (temp.next != null) {
+      temp = temp.next;
+      if (temp.value == target.value) {
+        newNode.next = temp.next;
+        temp.next = newNode;
+        length++;
+        return;
+      }
     }
   }
 
@@ -86,7 +86,9 @@ public class SinglyLinked {
     // singlyLLTwo.insertAfter(singlyLLTwo, 9, new Node(100));
     singlyLLTwo.append(singlyLLTwo.new Node(7));
     singlyLLTwo.append(singlyLLTwo.new Node(12));
-    System.out.println(singlyLLTwo.toString());
+    System.out.printf("List before inserting: [ %s]\n", singlyLLTwo.toString());
+    singlyLLTwo.insert(singlyLLTwo.new Node(9), singlyLLTwo.new Node(100));
+    System.out.printf("List: [ %s]\n", singlyLLTwo.toString());
 
   }
 
@@ -97,8 +99,6 @@ public class SinglyLinked {
     }
 
     singly.prepend(singly.new Node(85));
-
-    singly.insertAfter(y, singly.new Node(85));
 
     System.out.println(singly.toString());
   }
