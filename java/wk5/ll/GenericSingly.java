@@ -1,6 +1,7 @@
 public class GenericSingly<T> {
 
   static GenericSingly<Integer> testList = new GenericSingly<>();
+  static GenericSingly<String> stringList = new GenericSingly<>();
 
   class Node<T> {
     public T value;
@@ -37,6 +38,14 @@ public class GenericSingly<T> {
     }
   }
 
+  public Node<T> removeFirst() {
+    if (head == null)
+      return null;
+    Node<T> temp = head;
+    head = head.next;
+    return temp;
+  }
+
   public void insertAfter(T targetValue, T newValue) {
     Node<T> temp = head;
     while (temp.next != null) {
@@ -59,16 +68,16 @@ public class GenericSingly<T> {
     }
     StringBuilder sb = new StringBuilder();
     Node<T> temp = head;
-    sb.append("[");
+    sb.append("(");
     while (temp != null) {
       if (temp.next == null) {
         sb.append(temp.value);
         break;
       }
-      sb.append(temp.value).append(", ");
+      sb.append(temp.value).append(") -> (");
       temp = temp.next;
     }
-    sb.append("]\n");
+    sb.append(") -> null\n");
     return sb.toString();
   }
 
@@ -84,7 +93,20 @@ public class GenericSingly<T> {
     return testList;
   }
 
+  public static GenericSingly<String> testCaseString() {
+    stringList.append("ello");
+    stringList.append("world");
+    stringList.append("you");
+    stringList.append("bitch");
+    stringList.append("lol");
+    return stringList;
+  }
+
   public static void main(String[] args) {
     System.out.println(testList.printList(testCase()));
+    System.out.println(stringList.printList(testCaseString()));
+    stringList.removeFirst();
+    System.out.println("\n\n");
+    System.out.println(stringList.printList(stringList));
   }
 }
