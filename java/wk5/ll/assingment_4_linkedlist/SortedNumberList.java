@@ -1,3 +1,6 @@
+/**
+ * @author { @Override } | @since 20250328 : @22:58
+ **/
 
 public class SortedNumberList {
   public Node head;
@@ -8,48 +11,128 @@ public class SortedNumberList {
     tail = null;
   }
 
-  // Optional: Add any desired private methods here
-
-  // Inserts the number into the list in the correct position such that the
-  // list remains sorted in ascending order.
-  public void insert(double number) {
+  public void append(double number) {
     Node newNode = new Node(number);
-    System.out.printf("Inserting %.2f", number);
     if (head == null) {
       head = newNode;
       tail = newNode;
-      System.out.println("Head is null");
-    }
-    if (head.data > number) {
-      newNode.next = head;
-      head = newNode;
-      System.out.println("Head is not null and added the value");
     } else {
+      newNode.previous = tail;
       tail.next = newNode;
       tail = newNode;
-      System.out.println("Head is not null and added the value");
     }
   }
 
-  // Removes the node with the specified number value from the list. Returns
-  // true if the node is found and removed, false otherwise.
+  /**
+   * | OVERVIEW |
+   * -----------------
+   * 
+   * @see removeFirst() -> handles removing the first node in the list.
+   * @see removeLast() -> handles removing the last node in the list.
+   **/
+
+  public Node removeFirst() {
+    if (head == null)
+      return null;
+
+    Node temp = head;
+
+    if (head == tail) {
+      head = null;
+      tail = null;
+      return temp;
+    }
+
+    head = head.next;
+    head.previous = null;
+    temp.next = null;
+    return temp;
+  }
+
+  public Node removeLast() {
+    if (tail == null)
+      return null;
+
+    Node temp = tail;
+    if (head == tail) {
+      head = null;
+      tail = null;
+      return temp;
+    }
+
+    tail = tail.previous;
+    tail.next = null;
+    temp.previous = null;
+    return temp;
+  }
+
+  public void insert(double number) {
+    System.out.printf("Inserting %f\n", number);
+    Node newNode = new Node(number);
+
+    if (head == null) {
+      head = newNode;
+      tail = newNode;
+      return;
+    }
+
+    if (number < head.data) {
+      newNode.next = head;
+      head.previous = newNode;
+      head = newNode;
+      return;
+    }
+
+    if (number >= tail.data) {
+      newNode.previous = tail;
+      tail.next = newNode;
+      tail = newNode;
+      return;
+    }
+
+    Node current = head;
+    while (current != null && current.data < number) {
+      current = current.next;
+    }
+
+    newNode.next = current;
+    newNode.previous = current.previous;
+    current.previous.next = newNode;
+    current.previous = newNode;
+  }
+
   public boolean remove(double number) {
+    System.out.printf("Removing %f\n", number);
+
     if (head == null) {
       return false;
     }
 
     if (head.data == number) {
-      head = head.next;
-      return true;
+      Node removed = removeFirst();
+      return removed != null;
+    }
+
+    if (tail.data == number) {
+      Node removed = removeLast();
+      return removed != null;
     }
 
     Node current = head;
-    while (current.next != null) {
-      if (current.next.data == number) {
-        current.next = current.next.next;
-        return true;
-      }
+    while (current != null && current.data != number) {
+      current = current.next;
     }
-    return false;
+
+    if (current == null) {
+      return false;
+    }
+
+    current.previous.next = current.next;
+    current.next.previous = current.previous;
+
+    current.next = null;
+    current.previous = null;
+
+    return true;
   }
 }

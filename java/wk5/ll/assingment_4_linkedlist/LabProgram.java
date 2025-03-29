@@ -1,6 +1,10 @@
 import java.util.Scanner;
 import java.io.PrintWriter;
 
+/**
+ * @author { @Override } | @since 20250328 : @22:58
+ **/
+
 public class LabProgram {
   // Prints the SortedNumberList's contents, in order from head to tail
   public static void printList(SortedNumberList list) {
@@ -13,11 +17,13 @@ public class LabProgram {
   }
 
   public static void main(String[] args) {
+    System.out.println("Hello");
     Scanner scnr = new Scanner(System.in);
-    String inputLine;
 
     // Read the line of input numbers
-    inputLine = scnr.nextLine();
+    System.out.println("Please enter a list of numbers: ");
+    String inputLine = scnr.nextLine();
+    System.out.printf("Input line: %s\n", inputLine);
 
     // Split on space character
     String[] terms = inputLine.split(" ");
@@ -29,21 +35,20 @@ public class LabProgram {
     for (Object term : terms) {
       double number = Double.parseDouble(term.toString());
       System.out.println("List after inserting " + number + ": ");
-      // list.insert(number);
+      list.insert(number);
       printList(list);
     }
 
-    /*
-     * // Read the input line with numbers to remove
-     * inputLine = scnr.nextLine();
-     * terms = inputLine.split(" ");
-     * 
-     * for (Object term : terms) {
-     * double number = Double.parseDouble(term.toString());
-     * System.out.println("List after removing " + number + ": ");
-     * list.remove(number);
-     * printList(list);
-     * }
-     */
+    System.out.println("Please enter the ");
+    inputLine = scnr.nextLine();
+    terms = inputLine.split(" ");
+
+    for (Object term : terms) {
+      double number = Double.parseDouble(term.toString());
+      System.out.println("List after removing " + number + ": ");
+      list.remove(number);
+      printList(list);
+    }
+
   }
 }
