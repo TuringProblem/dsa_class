@@ -25,8 +25,9 @@ final class SwapCommand implements UndoCommand {
 
   @Override
   public void execute() {
+    String temp = sourceList.get(indexOne);
     sourceList.set(indexOne, sourceList.get(indexTwo));
-    sourceList.set(indexTwo, sourceList.get(indexOne));
+    sourceList.set(indexTwo, temp);
   }
 
 }

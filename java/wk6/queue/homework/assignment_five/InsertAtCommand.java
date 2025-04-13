@@ -8,10 +8,18 @@ import java.util.ArrayList;
 final class InsertAtCommand implements UndoCommand {
   // Your field declarations here
 
-  // Your constructor code here
+  private ArrayList<String> sourceList;
+  private String removedItem;
+  private int removalIndex;
+
+  public InsertAtCommand(ArrayList<String> sourceList, String removedItem, int removalIndex) {
+    this.sourceList = sourceList;
+    this.removedItem = removedItem;
+    this.removalIndex = removalIndex;
+  }
 
   @Override
   public void execute() {
-    // Your code here
+    sourceList.add(removalIndex, removedItem);
   }
 }
