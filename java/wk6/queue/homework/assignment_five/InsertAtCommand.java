@@ -6,7 +6,6 @@ import java.util.ArrayList;
  **/
 
 final class InsertAtCommand implements UndoCommand {
-  // Your field declarations here
 
   private ArrayList<String> sourceList;
   private String removedItem;

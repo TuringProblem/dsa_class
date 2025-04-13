@@ -26,7 +26,7 @@ public class GroceryList {
   }
 
   public void swapWithUndo(int indexOne, int indexTwo) {
-    if (indexOne < 0 || indexOne >= listItems.size() || indexTwo < 0 || indexTwo <= listItems.size()) {
+    if (indexOne < 0 || indexOne >= listItems.size() || indexTwo < 0 || indexTwo >= listItems.size()) {
       System.out.println("Invalid indices for swap");
       return;
     }
