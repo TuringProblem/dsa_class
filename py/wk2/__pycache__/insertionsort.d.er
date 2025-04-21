@@ -1,0 +1,6 @@
+##[pylyzer] failed /mnt/e/dsa_class/py/wk2/insertionsort.py 1742345546 655
+.random: Never
+
+.insertionsort: Never
+.main: () -> NoneType
+
