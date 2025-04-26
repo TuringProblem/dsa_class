@@ -123,11 +123,6 @@ public class Tests {
       System.out.printf("Calling getAssignmentScores(%s)\n", assignmentName);
       HashMap<Integer, Double> actualMap = gradebook.getAssignmentScores(assignmentName);
 
-      // This is stupid hah - but I added this because I thought thi
-      // System.out.print(assignmentName);
-      // System.out.print("\")");
-      // System.out.print("\n");
-
       // Compare sizes first
       if (expectedMap.size() != actualMap.size()) {
         System.out.print("FAIL: getAssignmentScores(\"");
@@ -152,14 +147,6 @@ public class Tests {
         if (!actualMap.containsKey(studentID)) {
           System.out.printf("FAIL: getAssignmentScores(%d) returned a map that is missing an entry for student iD %d\n",
               assignmentName, studentID);
-          /**
-           * System.out.print("FAIL: getAssignmentScores(\"");
-           * System.out.print(assignmentName);
-           * System.out.print("\") returned a map that is missing an entry ");
-           * System.out.print("for student ID ");
-           * System.out.print(studentID);
-           * System.out.print("\n");
-           **/
           return false;
         }
 
@@ -174,17 +161,6 @@ public class Tests {
           System.out.printf(
               "FAIL: getAssignmentScores(%s) returned a map that has a score of %d for student ID %d, but the expected score is %d",
               assignmentName, actualScore, studentID, expectedScore);
-          /**
-           * System.out.print("FAIL: getAssignmentScores(\"");
-           * System.out.print(assignmentName);
-           * System.out.print("\") returned a map that has a score of ");
-           * System.out.print(actualScore);
-           * System.out.print(" for student ID ");
-           * System.out.print(studentID);
-           * System.out.print(", but the expected score is ");
-           * System.out.print(expectedScore);
-           * System.out.print("\n");
-           **/
           return false;
         }
       }
@@ -192,31 +168,22 @@ public class Tests {
       // All entries match
       System.out.printf("PASS: getAssignmentScores(%s) returned a map with %d correct scores\n", assignmentName,
           actualMap.size());
-      /**
-       * System.out.print("PASS: getAssignmentScores(\"");
-       * System.out.print(assignmentName);
-       * System.out.print("\") returned a map with ");
-       * System.out.print(actualMap.size());
-       * System.out.print(" correct scores");
-       * System.out.print("\n");
-       **/
     }
     return true;
   }
 
+  // trying to test if we sorted the names correctly.
   public static boolean testGetSortedAssignmentNames() {
-    System.out.print("\n");
-    System.out.print("---- testGetSortedAssignmentNames() ----");
-    System.out.print("\n");
+    System.out.println("\n---- testGetSortedAssignmentNames() ----");
     CourseGradebook gradebook = TestUtility.makeSampleGradebook();
 
     ArrayList<String> expected = new ArrayList<String>(Arrays.asList("Course project", "Final exam", "Homework 1",
         "Homework 2", "Homework 3", "Homework 4", "Midterm"));
+    // this is the method that I need to add :)
     ArrayList<String> actual = gradebook.getSortedAssignmentNames();
 
-    boolean areEqual = true;
+    boolean areEqual = true; // this whole statement is trash
     if (actual.size() == expected.size()) {
-      // Compare elements in order
       for (int i = 0; areEqual && i < expected.size(); i++) {
         if (!expected.get(i).equals(actual.get(i))) {
           areEqual = false;
@@ -225,27 +192,14 @@ public class Tests {
     } else {
       areEqual = false;
     }
-
-    // Show pass or fail message along with expected and actual ArrayList contents
-    if (areEqual) {
-      System.out.print("PASS: getSortedAssignmentNames()");
-      System.out.print("\n");
-    } else {
-      System.out.print("FAIL: getSortedAssignmentNames()");
-      System.out.print("\n");
-    }
-    System.out.print("  Expected: ");
-    System.out.println(expected);
-    System.out.print("  Actual:   ");
-    System.out.println(actual);
+    System.out.println(areEqual ? "PASS: getSortedAssignmentNames()" : "FAIL: getSortedAssignmentNames()");
+    System.out.printf("  Expected: %s Actual: %s", expected, actual);
 
     return areEqual;
   }
 
   public static boolean testGetSortedStudentIDs() {
-    System.out.print("\n");
-    System.out.print("---- testGetSortedStudentIDs() ----");
-    System.out.print("\n");
+    System.out.println("\n---- testGetSortedStudentIDs() ----");
     CourseGradebook gradebook = TestUtility.makeSampleGradebook();
 
     ArrayList<Integer> expected = new ArrayList<Integer>(
@@ -254,7 +208,6 @@ public class Tests {
 
     boolean areEqual = true;
     if (actual.size() == expected.size()) {
-      // Compare elements in order
       for (int i = 0; areEqual && i < expected.size(); i++) {
         if (Integer.compare(actual.get(i), expected.get(i)) != 0) {
           areEqual = false;
