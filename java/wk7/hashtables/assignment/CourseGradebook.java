@@ -1,6 +1,4 @@
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.HashSet;
 
 /**
  * @author { @Override } | @since 20250423 22:54
@@ -8,8 +6,6 @@ import java.util.HashSet;
  **/
 public class CourseGradebook extends Gradebook {
   // Declare any protected fields here (change placeholder field below)
-  //
-
   HashMap<String, HashMap<Integer, Double>> gradebook;
 
   public CourseGradebook() {
@@ -18,12 +14,19 @@ public class CourseGradebook extends Gradebook {
 
   @Override
   public HashMap<Integer, Double> getAssignmentScores(String assignmentName) {
-    return new HashMap<>();
+    return gradebook.getOrDefault(assignmentName, new HashMap<>());
   }
 
   @Override
   public double getScore(String assignmentName, Integer studentID) {
-    return gradebook.get(assignmentName).get(studentID);
+    if (!gradebook.containsKey(assignmentName))
+      return Double.NaN;
+
+    HashMap<Integer, Double> assignmentScores = gradebook.get(assignmentName);
+    if (!assignmentScores.containsKey(studentID))
+      return Double.NaN;
+
+    return assignmentScores.get(studentID);
   }
 
   @Override
@@ -46,56 +49,24 @@ public class CourseGradebook extends Gradebook {
 
   @Override
   public HashMap<String, Double> getStudentScores(Integer studentID) {
-    //what do we need to do? 
-    //get the score from the hashmash
-
-
+    // what do we need to do?
+    // get the score from the hashmash
+    HashMap<String, Double> result = new HashMap<>();
+    for (String assignmentName : gradebook.keySet()) {
+      // Again I'm grabbing the assignment and mapping to studentid
+      HashMap<Integer, Double> assignmentScores = gradebook.get(assignmentName);
+      if (assignmentScores.containsKey(studentID)) {
+        result.put(assignmentName, assignmentScores.get(studentID));
+      }
+    }
+    return result;
   }
 
   @Override
   public void setScore(String assignmentName, Integer studentID, Double score) {
+    if (!gradebook.containsKey(assignmentName)) {
+      gradebook.put(assignmentName, new HashMap<>());
+    }
+    gradebook.get(assignmentName).put(studentID, score);
   }
-
-  /**
-   * IGNORE THIS THIS IS FOR ME
-   * HashMap<Integer, Double> hw2Scores = new HashMap<Integer, Double>() {{
-   * put(11111, 89.0);
-   * put(22222, 75.0);
-   * put(33333, 100.0);
-   * put(44444, 50.0);
-   * put(55555, 76.5);
-   * put(66666, 84.5);
-   * put(77777, 76.0);
-   * put(88888, 74.5);
-   * put(99999, 100.0);
-   * put(10000, 90.0);
-   * put(90000, 85.0);
-   * }};
-   * HashMap<Integer, Double> midtermScores = new HashMap<Integer, Double>() {{
-   * put(11111, 91.0);
-   * put(22222, 77.5);
-   * put(33333, 88.0);
-   * put(44444, 40.0);
-   * put(55555, 64.5);
-   * put(66666, 91.0);
-   * put(77777, 75.0);
-   * put(88888, 88.0);
-   * put(99999, 88.0);
-   * put(10000, 92.0);
-   * put(90000, 90.0);
-   * }};
-   * HashMap<Integer, Double> projectScores = new HashMap<Integer, Double>() {{
-   * put(11111, 100.0);
-   * put(22222, 60.0);
-   * put(33333, 90.0);
-   * put(55555, 87.0);
-   * put(66666, 0.0);
-   * put(77777, 72.0);
-   * put(88888, 85.5);
-   * put(99999, 80.0);
-   * put(10000, 77.5);
-   * put(90000, 85.0);
-   * }};
-   **/
-
 }
